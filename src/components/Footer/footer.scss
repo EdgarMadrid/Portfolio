@@ -1,0 +1,220 @@
+@use "@/styles/abstracts/variables" as v;
+@use "/src/styles/abstracts/mixins" as bs;
+@use "@/styles/abstracts/breakpoints" as md;
+
+.footer {
+  padding: 60px 16px;
+  background: v.$black-ligth;
+  position: relative;
+
+  .decoration {
+    @for $i from 1 through 6 {
+      .decoration__circle--large:nth-child(#{$i}) {
+        z-index: 0;
+        top: 560px + (($i - 1) * v.$step);
+        left: -342px;
+      }
+    }
+  }
+
+  .footer__contact {
+    display: grid;
+
+    .footer__content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      text-align: center;
+      margin-bottom: 50px;
+
+      .footer__title {
+        font-size: 40px;
+        font-weight: 700;
+        color: v.$white;
+      }
+    }
+
+    .footer__form {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+
+      .footer__field {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        label {
+          padding-left: 24px;
+
+          color: v.$white;
+          opacity: 0.5;
+
+          text-transform: uppercase;
+        }
+
+        .footer__input-wrapper {
+          position: relative;
+          display: flex;
+          align-items: center;
+
+          input,
+          textarea {
+            width: 100%;
+
+            background: transparent;
+
+            text-transform: uppercase;
+
+            border: none;
+
+            border-bottom: 2px solid rgba(v.$white, 0.5);
+
+            color: v.$white;
+
+            padding: 0 45px 16px 24px;
+
+            font-size: 18px;
+
+            transition: border-color 0.3s ease;
+
+            &:focus {
+              outline: none;
+            }
+
+            &.is-valid {
+              border-color: #4caf50;
+            }
+
+            &.is-error {
+              border-color: #f44336;
+            }
+          }
+
+          textarea {
+            resize: none;
+          }
+
+          .footer__icon {
+            position: absolute;
+
+            right: 10px;
+            bottom: 14px;
+
+            width: 20px;
+            height: 20px;
+
+            opacity: 0;
+
+            transition: opacity 0.3s ease;
+
+            pointer-events: none;
+          }
+
+          input.is-valid,
+          textarea.is-valid {
+            opacity: 1;
+          }
+
+          input.is-error ~ .footer__icon,
+          textarea.is-error ~ .footer__icon {
+            opacity: 1;
+          }
+        }
+
+        .footer__message {
+          align-self: end;
+          font-size: 14px;
+
+          text-transform: none;
+
+          color: #f44336;
+
+          opacity: 0;
+
+          visibility: hidden;
+
+          transform: translateY(-5px);
+
+          transition:
+            opacity 0.3s ease,
+            transform 0.3s ease;
+
+          &.show {
+            opacity: 1;
+
+            visibility: visible;
+
+            transform: translateY(0);
+          }
+        }
+      }
+
+      .button {
+        @include bs.contact-me;
+
+        background: transparent;
+
+        border: none;
+
+        align-self: end;
+      }
+    }
+  }
+
+  .footer__nav {
+    border-top: solid v.$text-color 1px;
+
+    padding-top: 39px;
+
+    margin-top: 87px;
+  }
+
+  @include md.respond(md) {
+    padding: 60px 30px 40px;
+
+    .decoration {
+      @for $i from 1 through 6 {
+        .decoration__circle--large:nth-child(#{$i}) {
+          top: 730px + (($i - 1) * v.$step);
+        }
+      }
+    }
+
+    .footer__contact {
+      padding: 0 162px;
+    }
+  }
+
+  @include md.respond(xl) {
+    padding: 80px 165px;
+
+    .decoration {
+      @for $i from 1 through 6 {
+        .decoration__circle--large:nth-child(#{$i}) {
+          top: 540px + (($i - 1) * v.$step);
+          left: -205px;
+        }
+      }
+    }
+
+    .footer__contact {
+      padding: 0;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 220px;
+
+      .footer__content {
+        text-align: start;
+
+        margin-bottom: 0;
+
+        .footer__title {
+          font-size: 88px;
+        }
+      }
+    }
+  }
+}

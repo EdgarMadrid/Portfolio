@@ -1,0 +1,54 @@
+@use "../abstracts/_variables" as v;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin button-base {
+  border: none;
+  cursor: pointer;
+  border-radius: v.$radius-sm;
+  transition: 0.2s ease;
+}
+
+@mixin contact-me {
+  color: v.$white;
+  font-weight: 700;
+  letter-spacing: 2.29px;
+  text-transform: uppercase;
+  text-decoration: none;
+  position: relative;
+  display: inline-flex;
+  padding-bottom: 8px;
+  height: 38px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: v.$secondary;
+    bottom: 0;
+    left: 0;
+  }
+
+  &:hover {
+    color: v.$secondary;
+  }
+}
+
+@mixin decoration-circle-large {
+  width: 530px;
+  height: 80px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: -1;
+}
+
+@mixin decoration-circle-small {
+  width: 129px;
+  height: 129px;
+  border: 1px solid v.$white;
+  z-index: -1;
+}

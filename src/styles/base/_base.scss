@@ -1,0 +1,81 @@
+@use "../abstracts/_variables" as v;
+@use "@/styles/abstracts/breakpoints.scss" as md;
+
+body {
+  font-family: v.$font-primary;
+  color: v.$text-color;
+  background-color: v.$primary;
+  font-size: clamp(16px, 1vw + 0.5rem, 18px);
+
+  &::before {
+    content: "";
+    position: absolute;
+    background: linear-gradient(180deg, v.$primary 10%, #242424 60%);
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 174px;
+    height: 383px;
+
+    z-index: -2;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 174px;
+    height: 383px;
+
+    background: url("/images/image-removebg-preview.png") center bottom /
+      contain no-repeat;
+
+    z-index: -1;
+  }
+
+  @include md.respond(md) {
+    &::before {
+      width: 322px;
+      height: 600px;
+      left: auto;
+      right: 0;
+      transform: none;
+      background: #242424;
+    }
+
+    &::after {
+      width: 322px;
+      height: 600px;
+      left: auto;
+      right: 0;
+      transform: none;
+    }
+  }
+
+  @include md.respond(xl) {
+    &::before {
+      right: 165px;
+    }
+
+    &::after {
+      right: 165px;
+    }
+  }
+}
+
+.page-enter {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

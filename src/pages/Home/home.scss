@@ -1,0 +1,16 @@
+@use "@/styles/abstracts/_variables" as v;
+@use "@/styles/abstracts/breakpoints" as md;
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    margin-bottom: 80px;
+  }
+
+  .main {
+    margin-bottom: 80px;
+  }
+}

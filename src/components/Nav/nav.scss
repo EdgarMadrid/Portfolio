@@ -1,0 +1,46 @@
+@use "@/styles/abstracts/variables" as v;
+@use "@/styles/abstracts/breakpoints" as md;
+
+.nav {
+  display: grid;
+  gap: 20px;
+  justify-items: center;
+  color: v.$white;
+
+  .nav__logo {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .nav__social-list {
+    display: flex;
+    gap: 21px;
+    list-style: none;
+
+    .nav__social-link img {
+      width: 24px;
+
+      height: 24px;
+
+      transition: filter 0.3s ease;
+
+      &:hover {
+        filter: brightness(0) saturate(100%) invert(78%) sepia(45%)
+          saturate(700%) hue-rotate(110deg) brightness(95%) contrast(90%);
+      }
+    }
+  }
+
+  @include md.respond(md) {
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+
+    .nav__logo {
+      justify-self: start;
+    }
+
+    .nav__social-list {
+      justify-self: end;
+      gap: 30px;
+    }
+  }
+}

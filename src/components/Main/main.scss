@@ -1,0 +1,136 @@
+@use "@/styles/abstracts/variables" as v;
+@use "@/styles/abstracts/mixins" as bs;
+@use "@/styles/abstracts/breakpoints" as md;
+
+.main {
+  display: grid;
+  gap: 80px;
+  padding: 0 16px;
+  position: relative;
+
+  .decoration {
+    @for $i from 1 through 6 {
+      .decoration__circle--large:nth-child(#{$i}) {
+        top: 510px + (($i - 1) * v.$step);
+        left: 50%;
+      }
+    }
+  }
+
+  .main__technologies {
+    display: grid;
+    border-top: solid v.$text-color 1px;
+    border-bottom: solid v.$text-color 1px;
+    padding: 40px 0;
+    justify-content: center;
+
+    .main__technology-list {
+      display: grid;
+      gap: 24px;
+      text-align: center;
+      list-style: none;
+
+      .main__technology-item {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 1px;
+
+        .main__technology-name {
+          font-size: 32px;
+          color: v.$white;
+          font-weight: bold;
+        }
+      }
+    }
+
+    @include md.respond(md) {
+      grid-template-columns: 1fr;
+      text-align: start;
+
+      .main__technology-list {
+        grid-template-columns: 1fr 1fr;
+        text-align: start;
+        border-bottom: none;
+
+        .main__technology-item {
+          .main__technology-name {
+            @include md.respond(md) {
+              font-size: 48px;
+            }
+          }
+        }
+      }
+    }
+
+    @include md.respond(xl) {
+      .main__technology-list {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 58px 30px;
+      }
+    }
+  }
+
+  .main__projects {
+    .main__projects-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 65px;
+      color: v.$white;
+      margin-bottom: 40px;
+      align-items: center;
+
+      .main__projects-title {
+        font-size: 40px;
+      }
+      .main__projects-link {
+        justify-self: end;
+        @include bs.contact-me;
+      }
+    }
+
+    .main__projects-grid {
+      display: grid;
+      justify-content: center;
+      gap: 40px;
+
+      @include md.respond(md) {
+        grid-template-columns: 1fr 1fr;
+        gap: 60px 24px;
+      }
+
+      @include md.respond(xl) {
+        gap: 69px 30px;
+      }
+    }
+  }
+
+  @include md.respond(md) {
+    padding: 0 32px;
+
+    .decoration {
+      @for $i from 1 through 6 {
+        .decoration__circle--large:nth-child(#{$i}) {
+          top: 300px + (($i - 1) * v.$step);
+          left: 75%;
+        }
+      }
+    }
+
+    .main__technologies {
+      border-bottom: none;
+    }
+  }
+
+  @include md.respond(xl) {
+    padding: 0 165px;
+
+    .decoration {
+      @for $i from 1 through 6 {
+        .decoration__circle--large:nth-child(#{$i}) {
+          top: 200px + (($i - 1) * v.$step);
+          left: 80%;
+        }
+      }
+    }
+  }
+}

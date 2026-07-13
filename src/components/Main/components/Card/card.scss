@@ -1,0 +1,82 @@
+@use "@/styles/abstracts/variables" as v;
+@use "/src/styles/abstracts/mixins" as bs;
+@use "@/styles/abstracts/breakpoints" as md;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 20px;
+  position: relative;
+
+  .card__image {
+    width: 100%;
+  }
+
+  .card__content {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .card__title {
+      font-size: 24px;
+      text-transform: uppercase;
+      color: v.$white;
+    }
+
+    .card__technologies {
+      display: inline-flex;
+      font-size: 18px;
+      color: v.$text-color;
+      text-transform: uppercase;
+      gap: 18px;
+    }
+
+    .card__actions {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 30px;
+      width: fit-content;
+
+      .card__link {
+        text-decoration: none;
+        @include bs.contact-me;
+      }
+    }
+  }
+
+  @include md.respond(xl) {
+    .card__content {
+      .card__actions {
+        grid-template-columns: none;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -40%);
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.35s ease,
+          transform 0.35s ease,
+          visibility 0.35s;
+        flex-direction: column;
+        justify-items: center;
+        cursor: pointer;
+        gap: 40px;
+      }
+    }
+
+    &:has(.card__image:hover),
+    &:has(.card__actions:hover) {
+      .card__image {
+        opacity: 0.25;
+      }
+
+      .card__actions {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}
