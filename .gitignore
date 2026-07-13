@@ -1,0 +1,52 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencias
+node_modules/
+jspm_packages/
+
+# Archivos de compilación y empaquetado
+dist/
+build/
+out/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnp.*
+.yarn-integrity
+
+# Entorno y variables de entorno
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Cobertura de pruebas (Test coverage)
+coverage/
+.nyc_output/
+
+# Cachés de compilación
+.eslintcache
+.tsbuildinfo
+*.tsbuildinfo
+.cache/
+tsconfig.tsbuildinfo
+
+# Archivos del sistema y de editores de código
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
